@@ -57,3 +57,6 @@ jobs:
           tags: pr-build:${{ github.sha }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
+          # Add build args to ensure all dependencies are installed
+          build-args: |
+            NODE_ENV=development

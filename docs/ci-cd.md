@@ -23,6 +23,7 @@ The PR Build Validation workflow (`pr-build.yml`) runs whenever a pull request i
 
 2. **Build**:
    - Builds the Docker image to ensure it can be built successfully
+   - Ensures all dependencies (including dev dependencies) are installed for the build
    - Does not push the image to any registry
 
 This workflow ensures that all code changes meet the project's quality standards and can be built successfully before being merged into the `master` branch.
@@ -36,7 +37,7 @@ The Docker Build and Push workflow (`docker-build-push.yml`) runs whenever chang
    - Sets up ESLint with Next.js recommended configuration if needed
    - Sets up Docker Buildx
    - Logs in to the GitHub Container Registry (GHCR)
-   - Builds the Docker image
+   - Builds the Docker image with all necessary dependencies
    - Pushes the image to GHCR with appropriate tags
 
 ### Docker Image Tags
@@ -59,7 +60,31 @@ docker pull ghcr.io/mateuszrogalski/terminal-portfolio:sha-abc1234
 docker pull ghcr.io/mateuszrogalski/terminal-portfolio:v1.0.0
 ```
 
+## Docker Build Process
+
+The Docker build process uses a multi-stage build to create optimized images:
+
+1. **Dependencies Stage**:
+
+   - Installs all dependencies (including dev dependencies) needed for the build
+   - Uses `npm ci` to ensure consistent installations
+
+2. **Builder Stage**:
+
+   - Copies dependencies from the previous stage
+   - Copies the application code
+   - Builds the Next.js application
+
+3. **Runner Stage**:
+   - Uses a minimal Alpine-based Node.js image
+   - Copies only the necessary files from the builder stage
+   - Runs as a non-root user for improved security
+   - Exposes the application port
+
+This multi-stage approach ensures that the final Docker image is as small as possible while still containing all the necessary files to run the application.
+
 ## Workflow Files
 
 - `.github/workflows/pr-build.yml` - PR Build Validation workflow
 - `.github/workflows/docker-build-push.yml` - Docker Build and Push workflow
+- `Dockerfile` - Docker build configuration
