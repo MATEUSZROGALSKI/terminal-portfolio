@@ -1,0 +1,23 @@
+version: "3.8"
+
+services:
+  workspace:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ../:/workspace
+    command: sleep infinity
+    environment:
+      - MONGODB_URI=mongodb://mongodb:27017
+      - MONGODB_DB=portfolio
+
+  mongodb:
+    image: mongo:latest
+    volumes:
+      - mongodb_data:/data/db
+    ports:
+      - "27017:27017"
+
+volumes:
+  mongodb_data:
