@@ -33,6 +33,23 @@
   /* Accent colors */
   --purple-accent: 157, 78, 221; /* #9d4edd */
   --orange-accent: 255, 123, 0; /* #ff7b00 */
+
+  /* Text sizes - unified system */
+  --text-xs: 0.75rem;      /* 12px - Extra small text (tags, metadata) */
+  --text-sm: 0.875rem;     /* 14px - Small text (terminal content, blog content) */
+  --text-base: 1rem;       /* 16px - Base text size */
+  --text-lg: 1.125rem;     /* 18px - Large text (subtitles) */
+  --text-xl: 1.25rem;      /* 20px - Extra large (section headers) */
+  --text-2xl: 1.5rem;      /* 24px - 2X large (important headers) */
+  --text-3xl: 1.875rem;    /* 30px - 3X large */
+  --text-4xl: 2.25rem;     /* 36px - 4X large (banner title) */
+  --text-5xl: 3rem;        /* 48px - 5X large */
+
+  /* Terminal specific text sizes - UNIFIED SIZE */
+  --terminal-font-size: 0.875rem;     /* 14px - Unified terminal font size for ALL components */
+  --terminal-prompt-size: var(--terminal-font-size);  /* Terminal prompt text */
+  --terminal-content-size: var(--terminal-font-size);  /* Terminal content text */
+  --terminal-title-size: var(--terminal-font-size);     /* Terminal window title */
 }
 
 body {
@@ -197,7 +214,7 @@ body {
 .panel-time {
   margin-left: auto;
   font-family: 'Ubuntu', sans-serif;
-  font-size: 0.9rem;
+  font-size: var(--terminal-font-size);
 }
 
 .banner {
@@ -293,7 +310,7 @@ body {
 
 .terminal-title {
   color: #a0a0a0;
-  font-size: 12px;
+  font-size: var(--terminal-title-size);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -302,7 +319,7 @@ body {
 .terminal-content {
   padding: 1.25rem 1.5rem;
   font-family: 'Fira Code', monospace;
-  font-size: 14px;
+  font-size: var(--terminal-content-size);
   line-height: 1.6;
   background: var(--terminal-bg);
   border-radius: 0 0 8px 8px;
@@ -475,7 +492,7 @@ body {
 .desktop-icon-label {
   color: white;
   text-align: center;
-  font-size: 12px;
+  font-size: var(--terminal-font-size);
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
@@ -517,7 +534,7 @@ body {
 
 .terminal-dropdown-item {
   padding: 6px 10px;
-  font-size: 13px;
+  font-size: var(--terminal-font-size);
   color: rgba(200, 200, 200, 0.8);
   transition: all 0.2s;
 }
@@ -556,7 +573,7 @@ body {
 .blog-tag {
   display: inline-flex;
   border-radius: 4px;
-  font-size: 0.7rem;
+  font-size: var(--terminal-font-size);
   padding: 2px 6px;
   background-color: rgba(59, 130, 246, 0.15);
   color: rgb(96, 165, 250);
@@ -589,15 +606,22 @@ body {
 
 /* Blog content styles */
 .blog-content h1 {
-  @apply text-xl mb-4 text-green-400;
+  font-size: var(--text-xl);
+  margin-bottom: 1rem;
+  color: #4ade80; /* text-green-400 */
 }
 
 .blog-content h2 {
-  @apply text-lg mb-3 mt-6 text-blue-400;
+  font-size: var(--text-lg);
+  margin-bottom: 0.75rem;
+  margin-top: 1.5rem;
+  color: #60a5fa; /* text-blue-400 */
 }
 
 .blog-content h3 {
-  @apply mb-2 mt-4 text-yellow-400;
+  margin-bottom: 0.5rem;
+  margin-top: 1rem;
+  color: #facc15; /* text-yellow-400 */
 }
 
 .blog-content p {
@@ -621,9 +645,11 @@ body {
 }
 
 .blog-content .code-block {
-  @apply my-4 overflow-x-auto;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  overflow-x: auto;
   font-family: 'Fira Code', monospace;
-  font-size: 0.85rem;
+  font-size: var(--terminal-font-size);
   line-height: 1.5;
 }
 
@@ -644,9 +670,11 @@ body {
 }
 
 .blog-content pre {
-  @apply my-4 overflow-x-auto;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  overflow-x: auto;
   font-family: 'Fira Code', monospace;
-  font-size: 0.85rem;
+  font-size: var(--terminal-font-size);
   line-height: 1.5;
 }
 

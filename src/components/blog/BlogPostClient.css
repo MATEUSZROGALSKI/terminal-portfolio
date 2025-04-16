@@ -1,12 +1,6 @@
 .blog-post-container {
   font-family: var(--font-jetbrains-mono), monospace;
-  font-size: 0.875rem;
-}
-
-@media (min-width: 768px) {
-  .blog-post-container {
-    font-size: 1rem;
-  }
+  font-size: var(--terminal-font-size);
 }
 
 .blog-post-header {
@@ -58,6 +52,12 @@
   line-height: 1.6;
 }
 
+.blog-post-title {
+  font-size: var(--text-xl);
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
 .blog-post-loading {
   margin-top: 0.5rem;
   color: var(--terminal-text);
@@ -87,4 +87,33 @@
 .blog-post-retry {
   margin-top: 0.5rem;
   color: #4390cf;
+}
+
+/* Text size modifiers for blog content */
+.blog-content .text-xs {
+  font-size: var(--text-xs);
+}
+
+.blog-content .text-sm {
+  font-size: var(--text-sm);
+}
+
+.blog-content .text-base {
+  font-size: var(--text-base);
+}
+
+.blog-content .text-lg {
+  font-size: var(--text-lg);
+}
+
+.blog-content .text-xl {
+  font-size: var(--text-xl);
+}
+
+.blog-content .text-2xl {
+  font-size: var(--text-2xl);
+}
+
+.blog-content .text-3xl {
+  font-size: var(--text-3xl);
 }

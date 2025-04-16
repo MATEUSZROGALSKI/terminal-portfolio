@@ -6,13 +6,11 @@ on:
       - master
     tags:
       - "v*"
-  pull_request:
-    branches:
-      - master
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository }}
+  # Convert repository name to lowercase for GHCR compatibility
+  IMAGE_NAME: ${{ format('{0}', github.repository) | lower }}
 
 jobs:
   build-and-push:
@@ -41,16 +39,15 @@ jobs:
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           tags: |
-            type=raw,value=latest,enable=${{ github.ref == format('refs/heads/{0}', 'main') }}
+            type=raw,value=latest,enable=${{ github.ref == format('refs/heads/{0}', 'master') }}
             type=sha,format=short
             type=ref,event=tag
-            type=ref,event=pr
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
         with:
           context: .
-          push: ${{ github.event_name != 'pull_request' }}
+          push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha

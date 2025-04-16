@@ -1,17 +1,20 @@
 # Terminal-Style Portfolio Website
 
-A terminal-themed portfolio website built with Next.js, Tailwind CSS, and MongoDB.
+A terminal-themed portfolio website built with Next.js, Tailwind CSS, and MongoDB. This project creates an interactive terminal-like interface with a dark theme inspired by Garuda Mokka and Dr4gonized Linux terminals.
 
 ## Features
 
 - Terminal-style interface with command-based navigation
 - Responsive design that works on all devices
-- Dark theme with animated background
-- Blog section with Markdown support
-- Projects showcase
-- Timeline/history section
-- Contact form
-- MongoDB integration for data storage
+- Dark theme with animated background and terminal aesthetics
+- Blog section with Markdown support and custom font size modifiers
+- Projects showcase with process list visualization (htop-style)
+- Timeline/history section displayed as git log
+- About section styled like neofetch output
+- Contact form with SMTP-like interaction
+- MongoDB integration for dynamic content
+- Docker support for development and production
+- Unified font size system for consistent UI
 
 ## Getting Started
 
@@ -81,7 +84,16 @@ Visit http://localhost:3000 in your browser.
 
 5. Open [http://localhost:3000](http://localhost:3000) in your browser to see the result.
 
-## MongoDB Data Structure
+## Dynamic Content Loading
+
+The application is designed to load all content dynamically from MongoDB. This means:
+
+- All blog posts, projects, timeline entries, and about information are fetched from the database at runtime
+- No content is statically generated during the build process
+- The application will work with any MongoDB instance as long as it has the correct schema
+- Content can be updated without rebuilding the application
+
+### MongoDB Data Structure
 
 The application uses MongoDB to store the following collections:
 
@@ -184,7 +196,30 @@ npm run seed-db
 
 This script will clear any existing data and insert sample data into all collections.
 
+## Documentation
+
+Detailed documentation is available in the `docs/` directory:
+
+- [UI Styling Guide](./docs/ui-styling.md) - Information about the styling approach, font system, and component styling
+- [Blog Formatting Guide](./docs/blog-formatting.md) - How to format blog posts with Markdown and custom font size modifiers
+- [MongoDB Schema Documentation](./docs/mongodb-schema.md) - Database schema design and collections
+- [Dynamic Content Loading](./docs/dynamic-content.md) - Explanation of how the application loads content dynamically from MongoDB
+
 ## Customization
+
+### Styling System
+
+The project uses a unified font size system with CSS variables to ensure consistency across components. All terminal components use the same font size (`--terminal-font-size`), while blog posts support custom font size modifiers.
+
+Key styling features:
+
+- Dark theme with terminal aesthetics
+- Monospace fonts (JetBrains Mono)
+- Purple and orange accent colors
+- Terminal-like UI elements
+- Component-specific CSS files
+
+See the [UI Styling Guide](./docs/ui-styling.md) for more details.
 
 ### Changing the Theme
 
@@ -233,16 +268,19 @@ docker run -p 3000:3000 -e MONGODB_URI=your_mongodb_uri terminal-portfolio
 
 ### GitHub Container Registry
 
-This project is automatically built and published to GitHub Container Registry (ghcr.io) using GitHub Actions. The workflow runs on pushes to the main branch and creates two tags:
+This project is automatically built and published to GitHub Container Registry (ghcr.io) using GitHub Actions. The workflow runs on pushes to the master branch and creates two tags:
 
-- `latest`: Always points to the most recent build from the main branch
+- `latest`: Always points to the most recent build from the master branch
 - `sha-<commit>`: Tagged with the short commit SHA for version tracking
 
 You can pull specific versions using:
 
 ```bash
+docker pull ghcr.io/mateuszrogalski/terminal-portfolio:latest
 docker pull ghcr.io/mateuszrogalski/terminal-portfolio:sha-abc1234
 ```
+
+See the [CI/CD Documentation](./docs/ci-cd.md) for more details on the build and deployment process.
 
 ### Docker Image Optimizations
 

@@ -1,7 +1,7 @@
 .command-line {
   position: relative;
   font-family: var(--font-jetbrains-mono), monospace;
-  font-size: 13px;
+  font-size: var(--terminal-prompt-size);
   line-height: 1.5;
   width: 100%;
   display: flex;
@@ -23,7 +23,7 @@
 .command-output-container {
   color: #e4e4e4;
   font-family: var(--font-jetbrains-mono), monospace;
-  font-size: 13px;
+  font-size: var(--terminal-content-size);
   line-height: 1.5;
   margin-top: 0.25rem;
   padding-left: 0;

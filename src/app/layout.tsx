@@ -1,4 +1,5 @@
 import './globals.css'
+import './text-sizes.css'
 import type { Metadata } from 'next'
 import { Inter, JetBrains_Mono } from 'next/font/google'
 import { AppContextProvider } from '@/context/AppContext'

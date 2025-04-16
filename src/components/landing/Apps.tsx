@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import './Apps.css';
 
 interface ProjectProps {
   _id: string;
@@ -225,7 +226,7 @@ const Apps = () => {
 
   if (isLoading) {
     return (
-      <pre className="font-mono">
+      <pre className="font-mono apps-container terminal-font">
         <div className="text-terminal-text">Loading process information...</div>
       </pre>
     );
@@ -233,7 +234,7 @@ const Apps = () => {
 
   if (error) {
     return (
-      <pre className="font-mono">
+      <pre className="font-mono apps-container terminal-font">
         <div className="text-red-400">{error}</div>
         <div className="text-yellow-400 mt-2">Try running: htop --retry</div>
       </pre>
@@ -251,7 +252,7 @@ const Apps = () => {
   const swapUsage = `5% used`; // Fixed value
 
   return (
-    <pre className="font-mono text-xs">
+    <pre className="font-mono apps-container terminal-font">
       {/* htop header */}
       <div className="mb-2 border-b border-gray-700 pb-2">
         <div className="flex justify-between text-gray-400">
@@ -287,7 +288,7 @@ const Apps = () => {
       ))}
 
       {/* htop footer */}
-      <div className="mt-2 border-t border-gray-700 pt-2 text-gray-400 text-xs">
+      <div className="mt-2 border-t border-gray-700 pt-2 text-gray-400">
         <div className="flex justify-between">
           <span>F1Help</span>
           <span>F2Setup</span>

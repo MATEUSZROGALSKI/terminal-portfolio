@@ -39,7 +39,7 @@ const Footer = () => {
           <TerminalPrompt />
         </span>
         <span className="footer-command">
-          exit
+          clear
         </span>
         <span className="footer-blink">_</span>
       </div>

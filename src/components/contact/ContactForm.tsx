@@ -55,7 +55,7 @@ const ContactForm: React.FC = () => {
   // Initialize SMTP session
   useEffect(() => {
     // Only initialize if we're in the init state
-    if (smtpState === 'init' || smtpState === 'connecting') {
+    if (smtpState === 'connecting') {
       // Simulate connecting to SMTP server and automatically handle initial handshake
       const initSmtp = async () => {
         // Clear any existing logs first
@@ -332,14 +332,14 @@ const ContactForm: React.FC = () => {
     setErrorMessage(null);
 
     // Set to init state directly to trigger the initialization effect
-    setSmtpState('init');
+    setSmtpState('connecting');
   };
 
   return (
     <div className="terminal-form">
       <div className="command-output">
         {/* SMTP Log */}
-        <div className="smtp-log mb-4 font-mono text-sm">
+        <div className="smtp-log mb-4 font-mono">
           {smtpLog.map((line, index) => (
             <div key={index} className={`smtp-log-line ${line.startsWith('>') ? 'smtp-client-message' : 'smtp-server-message'}`}>
               {line}
@@ -372,22 +372,19 @@ const ContactForm: React.FC = () => {
         {/* Help text for users */}
         {smtpState === 'mail_from' && (
           <div className="mt-4 smtp-help-text">
-            <p>Enter your email address (or type <span className="text-yellow-400">MAIL FROM:&lt;your@email.com&gt;</span> if you want to be technical)</p>
-            <p className="mt-1">Example: <span className="text-yellow-400">john@example.com</span> or <span className="text-yellow-400">MAIL FROM:&lt;john@example.com&gt;</span></p>
+            <p><span className="text-yellow-400">MAIL FROM:&lt;your@email.com&gt;</span> (confusing? yeah I know, just type your email address)</p>
           </div>
         )}
 
         {smtpState === 'data' && (
           <div className="mt-4 smtp-help-text">
-            <p>Enter your name (or type <span className="text-yellow-400">From: Your Name</span> if you want to be technical)</p>
-            <p className="mt-1">Example: <span className="text-yellow-400">John Doe</span> or <span className="text-yellow-400">From: John Doe</span></p>
+            <p><span className="text-yellow-400">From: Your Name</span> (this should not be as confusing as the previous one)</p>
           </div>
         )}
 
         {smtpState === 'subject' && (
           <div className="mt-4 smtp-help-text">
-            <p>Enter the subject of your message (or type <span className="text-yellow-400">Subject: Your Subject</span> if you want to be technical)</p>
-            <p className="mt-1">Example: <span className="text-yellow-400">Project Inquiry</span> or <span className="text-yellow-400">Subject: Project Inquiry</span></p>
+            <p><span className="text-yellow-400">Subject: Your Subject</span> (pretty self explainatory)</p>
           </div>
         )}
 
@@ -410,7 +407,7 @@ const ContactForm: React.FC = () => {
               Message delivered successfully!
             </div>
             <div className="smtp-success-message mb-4">
-              Thank you for your message! I'll get back to you soon.
+              Now you're cerfified mailbox smtp linux guru hacker. Use your new superpowers wisely!
             </div>
             <button
               onClick={resetSession}

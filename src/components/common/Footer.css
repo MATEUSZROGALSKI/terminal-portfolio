@@ -7,7 +7,7 @@
 .footer-command {
   color: var(--prompt-command);
   font-family: var(--font-jetbrains-mono), monospace;
-  font-size: 13px;
+  font-size: var(--terminal-prompt-size);
   margin-left: 0.25rem;
 }
 

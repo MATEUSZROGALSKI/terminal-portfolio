@@ -90,7 +90,7 @@ const Timeline = () => {
 
   if (isLoading) {
     return (
-      <pre className="timeline-container">
+      <pre className="timeline-container terminal-font">
         <div>Loading git history...</div>
       </pre>
     );
@@ -98,7 +98,7 @@ const Timeline = () => {
 
   if (error) {
     return (
-      <pre className="timeline-container">
+      <pre className="timeline-container terminal-font">
         <div className="timeline-error">{error}</div>
         <div className="timeline-retry">Try running: git fetch --retry</div>
       </pre>
@@ -168,14 +168,14 @@ const Timeline = () => {
   };
 
   return (
-    <div className="timeline-container command-output overflow-hidden">
+    <div className="timeline-container command-output overflow-hidden terminal-font">
       {/* Git log header */}
       <div className="mb-4 text-gray-400 border-b border-gray-700 pb-2">
         <div className="flex items-center justify-between">
           <span>Showing career history as a git log</span>
-          <span className="text-xs">Press ? for help</span>
+          <span>Press ? for help</span>
         </div>
-        <div className="text-xs mt-1">
+        <div className="mt-1">
           commit history | each position is represented as a commit | newest to oldest
         </div>
       </div>
@@ -189,7 +189,7 @@ const Timeline = () => {
           <div className="flex flex-wrap items-baseline">
             <span className="git-commit-hash mr-1">9774372</span>
             <span className="text-white mr-1">-</span>
-            <span className="git-branch-info mr-1">(HEAD -> main, origin/main, origin/HEAD)</span>
+            <span className="git-branch-info mr-1">(HEAD -&gt; main, origin/main, origin/HEAD)</span>
             <span className="git-commit-message mr-1">feat: Ready for next career opportunity</span>
             <span className="git-commit-date mr-1">(coming soon)</span>
             <span className="git-commit-author">&lt;you@awesome-company.com&gt;</span>
@@ -242,7 +242,7 @@ const Timeline = () => {
                       <div key={i} className="flex items-center">
                         <span className="text-green-400 mr-2">+</span>
                         <span className="text-gray-300">{skill.toLowerCase()}.skill</span>
-                        <span className="text-gray-500 ml-2 text-xs">{Math.floor(Math.random() * 100) + 10} insertions(+)</span>
+                        <span className="text-gray-500 ml-2">{Math.floor(Math.random() * 100) + 10} insertions(+)</span>
                       </div>
                     ))}
                   </div>
@@ -266,7 +266,7 @@ const Timeline = () => {
           <span>Use <span className="text-[#ff7b00]">↑</span>/<span className="text-[#ff7b00]">↓</span> to navigate history</span>
           <span>Press <span className="text-[#ff7b00]">q</span> to quit</span>
         </div>
-        <div className="flex justify-between mt-1 text-xs">
+        <div className="flex justify-between mt-1">
           <span><span className="text-[#ff7b00]">j</span>/<span className="text-[#ff7b00]">k</span> to move up/down</span>
           <span><span className="text-[#ff7b00]">g</span> to go to top, <span className="text-[#ff7b00]">G</span> to go to bottom</span>
         </div>

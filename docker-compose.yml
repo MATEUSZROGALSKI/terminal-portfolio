@@ -2,7 +2,7 @@ version: "3.8"
 
 services:
   app:
-    image: ghcr.io/yourusername/terminal-portfolio:latest
+    image: ghcr.io/mateuszrogalski/terminal-portfolio:latest
     # Alternatively, build from local Dockerfile
     # build:
     #   context: .
