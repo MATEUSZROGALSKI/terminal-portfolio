@@ -1,0 +1,83 @@
+/* Blog tag styling */
+.blog-tag {
+  display: inline-flex;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  padding: 2px 6px;
+  background-color: rgba(59, 130, 246, 0.15);
+  color: rgb(96, 165, 250);
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.blog-tag:hover {
+  background-color: rgba(59, 130, 246, 0.25);
+}
+
+/* Blog post item styling */
+.blog-post {
+  transition: all 0.2s ease;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.blog-post:hover {
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+/* Terminal directory entry styling */
+.directory-entry {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.25rem;
+}
+
+.file-permission {
+  color: #4390cf;
+}
+
+.file-separator {
+  color: #888;
+}
+
+.file-owner {
+  color: #e4e4e4;
+}
+
+.file-date {
+  color: #4390cf;
+  margin-left: 0.25rem;
+}
+
+.file-icon {
+  color: #ffbd2e;
+  margin-left: 0.25rem;
+}
+
+.file-name {
+  color: #4390cf;
+}
+
+.file-arrow {
+  color: #888;
+  margin-left: 0.5rem;
+}
+
+.file-title {
+  color: #60a5fa;
+  margin-left: 0.25rem;
+}
+
+.file-description {
+  color: #aaa;
+  font-size: 0.75rem;
+  margin-left: 350px;
+}
+
+.file-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-left: 350px;
+  margin-bottom: 0.25rem;
+}

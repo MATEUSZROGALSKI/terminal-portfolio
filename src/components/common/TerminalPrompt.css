@@ -1,0 +1,27 @@
+.terminal-prompt {
+  white-space: nowrap;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+}
+
+.prompt-base {
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.prompt-brackets {
+  color: var(--prompt-brackets);
+  font-weight: bold;
+}
+
+.prompt-path {
+  color: var(--prompt-path);
+  font-weight: bold;
+}
+
+.prompt-dollar {
+  color: var(--prompt-dollar);
+  margin-left: 4px;
+}

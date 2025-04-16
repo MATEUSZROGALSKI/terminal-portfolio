@@ -1,0 +1,52 @@
+.terminal-header {
+  background-color: #0c0c16;
+  padding: 2rem 1rem;
+}
+
+.banner-title {
+  background: linear-gradient(to right, #9d4edd, #ff7b00);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  font-size: 2.5rem;
+  font-weight: bold;
+  letter-spacing: 0.05em;
+}
+
+@media (min-width: 768px) {
+  .banner-title {
+    font-size: 3rem;
+  }
+}
+
+.banner-subtitle {
+  background: linear-gradient(to right, #9d4edd 30%, #ff7b00 70%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  opacity: 0.8;
+  display: inline-block;
+  margin-top: 0.5rem;
+  font-size: 1rem;
+}
+
+@media (min-width: 768px) {
+  .banner-subtitle {
+    font-size: 1.125rem;
+  }
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.social-icon {
+  color: #9d4edd;
+  transition: all 0.2s ease;
+}
+
+.social-icon:hover {
+  color: #ff7b00;
+  transform: translateY(-2px);
+}
