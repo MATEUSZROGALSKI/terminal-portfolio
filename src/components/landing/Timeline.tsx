@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import './Timeline.css';
 
 interface TimelineEntry {
   _id: string;
@@ -89,35 +90,29 @@ const Timeline = () => {
 
   if (isLoading) {
     return (
-      <pre className="font-mono text-xs md:text-sm">
-        <div className="text-terminal-text">Loading git history...</div>
+      <pre className="timeline-container">
+        <div>Loading git history...</div>
       </pre>
     );
   }
 
   if (error) {
     return (
-      <pre className="font-mono text-xs md:text-sm">
-        <div className="text-red-400">{error}</div>
-        <div className="text-yellow-400 mt-2">Try running: git fetch --retry</div>
+      <pre className="timeline-container">
+        <div className="timeline-error">{error}</div>
+        <div className="timeline-retry">Try running: git fetch --retry</div>
       </pre>
     );
   }
 
   // Create a consistent git graph structure
   const createGitGraph = (index: number, total: number, isFirst = false) => {
-    // Fixed width for the graph column
-    const graphColumnStyle = {
-      width: '2ch',
-      textAlign: 'center' as const,
-      display: 'inline-block',
-      color: '#ff7b00'
-    };
+
 
     // For the first entry (future opportunity)
     if (isFirst) {
       return (
-        <span style={graphColumnStyle}>*</span>
+        <span className="git-graph-column">*</span>
       );
     }
 
@@ -126,30 +121,24 @@ const Timeline = () => {
     if (index % 3 === 0) {
       // Main line commits
       return (
-        <span style={graphColumnStyle}>*</span>
+        <span className="git-graph-column">*</span>
       );
     } else if (index % 3 === 1) {
       // Merge commits
       return (
-        <span style={graphColumnStyle}>⦿</span>
+        <span className="git-graph-column">⦿</span>
       );
     } else {
       // Feature branch commits
       return (
-        <span style={graphColumnStyle}>◉</span>
+        <span className="git-graph-column">◉</span>
       );
     }
   };
 
   // Create connecting lines between commits
   const createConnectingLine = (index: number, total: number, isFirst = false) => {
-    // Fixed width for the graph column
-    const graphColumnStyle = {
-      width: '2ch',
-      textAlign: 'center' as const,
-      display: 'inline-block',
-      color: '#ff7b00'
-    };
+
 
     if (isFirst || index >= total - 1) return null;
 
@@ -158,28 +147,28 @@ const Timeline = () => {
       // Main line
       return (
         <div className="my-1">
-          <span style={graphColumnStyle}>|</span>
+          <span className="git-graph-column">|</span>
         </div>
       );
     } else if (index % 3 === 1) {
       // Merge line
       return (
         <div className="my-1">
-          <span style={graphColumnStyle}>|</span>
+          <span className="git-graph-column">|</span>
         </div>
       );
     } else {
       // Branch line
       return (
         <div className="my-1">
-          <span style={graphColumnStyle}>|</span>
+          <span className="git-graph-column">|</span>
         </div>
       );
     }
   };
 
   return (
-    <div className="command-output font-mono text-xs md:text-sm overflow-hidden">
+    <div className="timeline-container command-output overflow-hidden">
       {/* Git log header */}
       <div className="mb-4 text-gray-400 border-b border-gray-700 pb-2">
         <div className="flex items-center justify-between">
@@ -198,14 +187,14 @@ const Timeline = () => {
         </div>
         <div className="flex-1">
           <div className="flex flex-wrap items-baseline">
-            <span className="text-red-400 mr-1">9774372</span>
+            <span className="git-commit-hash mr-1">9774372</span>
             <span className="text-white mr-1">-</span>
-            <span className="text-yellow-400 mr-1">(HEAD -> main, origin/main, origin/HEAD)</span>
-            <span className="text-white mr-1">feat: Ready for next career opportunity</span>
-            <span className="text-green-400 mr-1">(coming soon)</span>
-            <span className="text-blue-400">&lt;you@awesome-company.com&gt;</span>
+            <span className="git-branch-info mr-1">(HEAD -> main, origin/main, origin/HEAD)</span>
+            <span className="git-commit-message mr-1">feat: Ready for next career opportunity</span>
+            <span className="git-commit-date mr-1">(coming soon)</span>
+            <span className="git-commit-author">&lt;you@awesome-company.com&gt;</span>
           </div>
-          <div className="mt-1 ml-4 text-gray-400 whitespace-pre-wrap">
+          <div className="mt-1 ml-4 timeline-future-opportunity whitespace-pre-wrap">
             Looking for new opportunities to make an impact with my backend engineering and security expertise.
           </div>
         </div>
@@ -214,12 +203,7 @@ const Timeline = () => {
       {/* Connecting line after future opportunity */}
       <div className="flex my-1">
         <div className="flex-shrink-0 mr-1 w-6 flex justify-center">
-          <span style={{
-            width: '2ch',
-            textAlign: 'center',
-            display: 'inline-block',
-            color: '#ff7b00'
-          }}>|</span>
+          <span className="git-graph-column">|</span>
         </div>
       </div>
 
@@ -239,12 +223,12 @@ const Timeline = () => {
               <div className="flex-1">
                 {/* Commit line */}
                 <div className="flex flex-wrap items-baseline">
-                  <span className="text-red-400 mr-1">{commitHash}</span>
+                  <span className="git-commit-hash mr-1">{commitHash}</span>
                   <span className="text-white mr-1">-</span>
-                  <span className="text-yellow-400 mr-1">{branchInfo}</span>
-                  <span className="text-white mr-1">{entry.position.includes(':') ? entry.position : `${entry.position}: Worked at ${entry.company}`}</span>
-                  <span className="text-green-400 mr-1">({relativeTime})</span>
-                  <span className="text-blue-400">&lt;{entry.company.split(' ')[0].toLowerCase()}@career.dev&gt;</span>
+                  <span className="git-branch-info mr-1">{branchInfo}</span>
+                  <span className="git-commit-message mr-1">{entry.position.includes(':') ? entry.position : `${entry.position}: Worked at ${entry.company}`}</span>
+                  <span className="git-commit-date mr-1">({relativeTime})</span>
+                  <span className="git-commit-author">&lt;{entry.company.split(' ')[0].toLowerCase()}@career.dev&gt;</span>
                 </div>
 
                 {/* Description */}

@@ -3,6 +3,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useAppContext } from '@/context/AppContext';
 import TerminalPrompt from '../common/TerminalPrompt';
+import './ContactForm.css';
 
 type SmtpState =
   | 'connecting'
@@ -338,9 +339,9 @@ const ContactForm: React.FC = () => {
     <div className="terminal-form">
       <div className="command-output">
         {/* SMTP Log */}
-        <div className="smtp-log mb-4 font-mono text-sm" style={{ fontFamily: 'var(--font-jetbrains-mono), monospace' }}>
+        <div className="smtp-log mb-4 font-mono text-sm">
           {smtpLog.map((line, index) => (
-            <div key={index} className={line.startsWith('>') ? 'text-green-400' : 'text-blue-400'}>
+            <div key={index} className={`smtp-log-line ${line.startsWith('>') ? 'smtp-client-message' : 'smtp-server-message'}`}>
               {line}
             </div>
           ))}
@@ -349,49 +350,49 @@ const ContactForm: React.FC = () => {
 
         {/* Input line - only show when in an active state */}
         {['connected', 'helo', 'mail_from', 'rcpt_to', 'data', 'subject', 'message_content'].includes(smtpState) && (
-          <div className="command-line relative flex items-center">
-            <span className="text-green-400">&gt;</span>
+          <div className="smtp-input-line">
+            <span className="smtp-input-prompt">&gt;</span>
             <input
               ref={inputRef}
               type="text"
               value={currentInput}
               onChange={handleInputChange}
               onKeyDown={handleInputSubmit}
-              className="bg-transparent border-none outline-none w-full text-green-400 ml-2 pr-4"
+              className="smtp-input"
               autoFocus
               autoComplete="off"
               spellCheck="false"
             />
             {showCursor && currentInput.length === 0 && (
-              <span className="absolute left-6 text-gray-500">_</span>
+              <span className="smtp-cursor">_</span>
             )}
           </div>
         )}
 
         {/* Help text for users */}
         {smtpState === 'mail_from' && (
-          <div className="mt-4 text-gray-400 text-xs">
+          <div className="mt-4 smtp-help-text">
             <p>Enter your email address (or type <span className="text-yellow-400">MAIL FROM:&lt;your@email.com&gt;</span> if you want to be technical)</p>
             <p className="mt-1">Example: <span className="text-yellow-400">john@example.com</span> or <span className="text-yellow-400">MAIL FROM:&lt;john@example.com&gt;</span></p>
           </div>
         )}
 
         {smtpState === 'data' && (
-          <div className="mt-4 text-gray-400 text-xs">
+          <div className="mt-4 smtp-help-text">
             <p>Enter your name (or type <span className="text-yellow-400">From: Your Name</span> if you want to be technical)</p>
             <p className="mt-1">Example: <span className="text-yellow-400">John Doe</span> or <span className="text-yellow-400">From: John Doe</span></p>
           </div>
         )}
 
         {smtpState === 'subject' && (
-          <div className="mt-4 text-gray-400 text-xs">
+          <div className="mt-4 smtp-help-text">
             <p>Enter the subject of your message (or type <span className="text-yellow-400">Subject: Your Subject</span> if you want to be technical)</p>
             <p className="mt-1">Example: <span className="text-yellow-400">Project Inquiry</span> or <span className="text-yellow-400">Subject: Project Inquiry</span></p>
           </div>
         )}
 
         {smtpState === 'message_content' && (
-          <div className="mt-4 text-gray-400 text-xs">
+          <div className="mt-4 smtp-help-text">
             <p>Type your message. When you're done, enter a single <span className="text-yellow-400">.</span> (period) on a line by itself.</p>
             <p className="mt-1">Example:</p>
             <p className="text-yellow-400 mt-1">Hello,</p>
@@ -405,15 +406,15 @@ const ContactForm: React.FC = () => {
         {/* Success message */}
         {smtpState === 'sent' && (
           <div className="mt-4">
-            <div className="text-green-400 mb-2">
+            <div className="smtp-success-message mb-2">
               Message delivered successfully!
             </div>
-            <div className="text-green-400 mb-4">
+            <div className="smtp-success-message mb-4">
               Thank you for your message! I'll get back to you soon.
             </div>
             <button
               onClick={resetSession}
-              className="text-yellow-400 hover:underline cursor-pointer"
+              className="smtp-submit-button"
             >
               Start a new SMTP session
             </button>
@@ -423,12 +424,12 @@ const ContactForm: React.FC = () => {
         {/* Error message */}
         {smtpState === 'error' && (
           <div className="mt-4">
-            <div className="text-red-400 mb-2">
+            <div className="smtp-error-message mb-2">
               Error: {errorMessage || 'Connection error'}
             </div>
             <button
               onClick={resetSession}
-              className="text-yellow-400 hover:underline cursor-pointer"
+              className="smtp-submit-button"
             >
               Reconnect to SMTP server
             </button>
@@ -438,12 +439,12 @@ const ContactForm: React.FC = () => {
         {/* Quit message */}
         {smtpState === 'quit' && (
           <div className="mt-4">
-            <div className="text-yellow-400 mb-2">
+            <div className="smtp-quit-message mb-2">
               Connection closed.
             </div>
             <button
               onClick={resetSession}
-              className="text-yellow-400 hover:underline cursor-pointer"
+              className="smtp-submit-button"
             >
               Reconnect to SMTP server
             </button>

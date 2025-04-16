@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useAppContext } from '@/context/AppContext';
 import TerminalPrompt from './TerminalPrompt';
+import './Footer.css';
 
 const Footer = () => {
   const { defaults } = useAppContext();
@@ -21,19 +22,12 @@ const Footer = () => {
   }, [currentYear]);
 
   return (
-    <div className="mt-6 pt-4 border-t border-gray-800">
+    <div className="footer-container">
       <div className="command-line">
         <span className="prompt">
           <TerminalPrompt />
         </span>
-        <span
-          className="command ml-1"
-          style={{
-            color: 'var(--prompt-command)',
-            fontFamily: 'var(--font-jetbrains-mono), monospace',
-            fontSize: '13px'
-          }}
-        >
+        <span className="footer-command">
           {`echo "© ${currentYear} ${defaults.companyName}. All rights reserved."`}
         </span>
       </div>
@@ -44,17 +38,10 @@ const Footer = () => {
         <span className="prompt">
           <TerminalPrompt />
         </span>
-        <span
-          className="command ml-1"
-          style={{
-            color: 'var(--prompt-command)',
-            fontFamily: 'var(--font-jetbrains-mono), monospace',
-            fontSize: '13px'
-          }}
-        >
+        <span className="footer-command">
           exit
         </span>
-        <span className="blink text-terminal-text ml-1">_</span>
+        <span className="footer-blink">_</span>
       </div>
     </div>
   );

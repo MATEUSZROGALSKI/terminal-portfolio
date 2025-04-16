@@ -1,0 +1,75 @@
+.terminal-window {
+  background-color: #0c0c16;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(157, 78, 221, 0.1), 0 0 0 3px rgba(255, 123, 0, 0.05);
+  height: calc(100vh - 200px);
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto 10px auto;
+  width: 90%;
+  max-width: 1000px;
+}
+
+.terminal-titlebar {
+  background: #0c0c16;
+  border-bottom: 1px solid rgba(157, 78, 221, 0.3);
+  height: 32px;
+  padding: 0 0 0 8px;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+}
+
+.terminal-buttons {
+  display: flex;
+  align-items: center;
+  margin-right: 8px;
+}
+
+.terminal-button {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-right: 6px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.terminal-button:hover {
+  opacity: 0.8;
+}
+
+.terminal-button-close {
+  background-color: #ff5f56;
+}
+
+.terminal-button-minimize {
+  background-color: #ffbd2e;
+}
+
+.terminal-button-maximize {
+  background-color: #27c93f;
+}
+
+.terminal-tabs {
+  display: flex;
+  height: 100%;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.terminal-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.terminal-tab {
+  transition: all 0.2s ease;
+  min-width: 180px;
+}
+
+.terminal-content {
+  background: #0c0c16;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+  flex: 1;
+  overflow-y: auto;
+  padding: 12px;
+}

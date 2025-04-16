@@ -1,0 +1,70 @@
+.timeline-container {
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 0.875rem;
+}
+
+.timeline-error {
+  color: #ff5f56;
+}
+
+.timeline-retry {
+  color: #ffbd2e;
+  margin-top: 0.5rem;
+}
+
+.git-graph-column {
+  width: 2ch;
+  text-align: center;
+  display: inline-block;
+  color: #ff7b00;
+}
+
+.git-commit-hash {
+  color: #9d4edd;
+  margin-right: 0.5rem;
+}
+
+.git-commit-date {
+  color: #888;
+  margin-right: 0.5rem;
+}
+
+.git-commit-author {
+  color: #4390cf;
+  margin-right: 0.5rem;
+}
+
+.git-commit-message {
+  color: #e4e4e4;
+}
+
+.git-branch-info {
+  color: #27c93f;
+  margin-left: 0.5rem;
+}
+
+.timeline-entry {
+  display: flex;
+  align-items: flex-start;
+}
+
+.timeline-entry-content {
+  flex: 1;
+}
+
+.timeline-entry-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.timeline-entry-details {
+  margin-left: 2.5rem;
+  color: #aaa;
+  font-size: 0.75rem;
+}
+
+.timeline-future-opportunity {
+  color: #ff7b00;
+  font-weight: bold;
+}

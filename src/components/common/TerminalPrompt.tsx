@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { useAppContext } from '@/context/AppContext';
+import './TerminalPrompt.css';
 
 interface TerminalPromptProps {
   path?: string;
@@ -10,49 +11,18 @@ interface TerminalPromptProps {
 const TerminalPrompt: React.FC<TerminalPromptProps> = ({ path = '~' }) => {
   const { defaults } = useAppContext();
 
-  // Common style for all prompt parts
-  const baseStyle = {
-    fontFamily: 'var(--font-jetbrains-mono), monospace',
-    fontSize: '13px',
-    whiteSpace: 'nowrap' as const
-  };
-
   return (
-    <span className="terminal-prompt" style={{ whiteSpace: 'nowrap', flexShrink: 0, display: 'inline-flex', alignItems: 'center' }}>
-      <span
-        style={{
-          ...baseStyle,
-          color: 'var(--prompt-brackets)',
-          fontWeight: 'bold'
-        }}
-      >
+    <span className="terminal-prompt">
+      <span className="prompt-base prompt-brackets">
         {`[${defaults.companyName.toLowerCase()}@homepage:`}
       </span>
-      <span
-        style={{
-          ...baseStyle,
-          color: 'var(--prompt-path)',
-          fontWeight: 'bold'
-        }}
-      >
+      <span className="prompt-base prompt-path">
         {path}
       </span>
-      <span
-        style={{
-          ...baseStyle,
-          color: 'var(--prompt-brackets)',
-          fontWeight: 'bold'
-        }}
-      >
+      <span className="prompt-base prompt-brackets">
         {`]`}
       </span>
-      <span
-        className="ml-1"
-        style={{
-          ...baseStyle,
-          color: 'var(--prompt-dollar)'
-        }}
-      >
+      <span className="prompt-base prompt-dollar ml-1">
         $
       </span>
     </span>

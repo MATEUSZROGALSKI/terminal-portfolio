@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Command from '@/components/common/Command';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
+import './BlogPostClient.css';
 
 interface BlogPost {
   _id: string;
@@ -126,19 +127,19 @@ export default function BlogPostClient() {
     return (<>
           <Command command={`bat --style=full --paging=always /var/www/blog/${params.slug}.md`}>
             <div className="command-output">
-              <div className="font-mono text-xs md:text-sm">
+              <div className="blog-post-container">
                 {/* Error message */}
                 <div className="mt-2">
-                  <div className="text-red-500">
+                  <div className="blog-post-error">
                     bat: error: {`/var/www/blog/${params.slug}.md: ${error}`}
                   </div>
                 </div>
 
                 {/* Retry suggestion */}
                 <div className="mt-2">
-                  <div className="flex items-center">
-                    <span className="text-blue-400">exa</span>
-                    <span className="text-terminal-text"> -la --icons --git --color=always /var/www/blog</span>
+                  <div className="blog-post-retry">
+                    <span>exa</span>
+                    <span> -la --icons --git --color=always /var/www/blog</span>
                   </div>
                 </div>
               </div>
@@ -151,27 +152,27 @@ export default function BlogPostClient() {
         <Command command={`bat --style=full --paging=always /var/www/blog/${params.slug}.md`}>
           {isLoading ? (
             <div className="command-output">
-              <div className="font-mono text-xs md:text-sm">
+              <div className="blog-post-container">
                 {/* Loading animation */}
                 <div className="mt-2">
-                  <div className="text-terminal-text">
+                  <div className="blog-post-loading">
                     <span>Reading file</span>
-                    <span className="animate-pulse">...</span>
+                    <span className="blog-post-loading-animation">...</span>
                   </div>
                 </div>
               </div>
             </div>
           ) : post ? (
             <div className="command-output">
-              <div className="font-mono text-xs md:text-sm">
+              <div className="blog-post-container">
                 {/* Bat-style file header */}
-                <div className="text-white mt-2">
+                <div className="blog-post-header">
                   <div className="flex justify-between">
-                    <div>
-                      <span className="text-yellow-400">📄 </span>
+                    <div className="blog-post-file">
+                      <span className="blog-post-file-icon">📄 </span>
                       <span>{`/var/www/blog/${params.slug}.md`}</span>
                     </div>
-                    <div className="text-gray-400">
+                    <div className="blog-post-date">
                       {new Date(post.date).toLocaleDateString('en-US', {
                         year: 'numeric',
                         month: 'short',
@@ -182,22 +183,22 @@ export default function BlogPostClient() {
                 </div>
 
                 {/* Content container */}
-                <div className="mt-1">
+                <div className="blog-post-content">
                   {/* Content column */}
                   <div className="overflow-x-auto">
                     {/* Title and metadata */}
                     <div className="text-xl text-green-400">{post.title}</div>
 
-                    <div className="flex flex-wrap gap-4 text-sm">
-                      <div className="flex items-center">
-                        <span className="text-gray-500">Author:</span>
-                        <span className="text-blue-400 ml-1">{post.author}</span>
+                    <div className="blog-post-meta">
+                      <div className="blog-post-author">
+                        <span>Author:</span>
+                        <span className="ml-1">{post.author}</span>
                       </div>
 
-                      <div className="flex flex-wrap gap-2">
-                        <span className="text-gray-500">Tags:</span>
+                      <div className="blog-post-tags">
+                        <span>Tags:</span>
                         {post.tags.map(tag => (
-                          <span key={tag} className="text-blue-300 ml-1">
+                          <span key={tag} className="blog-tag ml-1">
                             #{tag}
                           </span>
                         ))}
@@ -213,13 +214,13 @@ export default function BlogPostClient() {
                 </div>
 
                 {/* Bat-style footer */}
-                <div className="mt-2 text-gray-400 text-xs">
+                <div className="blog-post-footer">
                   <div className="flex justify-between">
-                    <Link href="/blog" className="text-blue-400 hover:underline flex items-center">
+                    <Link href="/blog" className="blog-post-back-link">
                       <span className="mr-1">←</span> Back to blog list
                     </Link>
 
-                    <div>
+                    <div className="blog-post-file-info">
                       {`${params.slug}.md [${post.content.split('\n').length} lines] (END)`}
                     </div>
                   </div>
@@ -228,22 +229,22 @@ export default function BlogPostClient() {
             </div>
           ) : (
             <div className="command-output">
-              <div className="font-mono text-xs md:text-sm">
+              <div className="blog-post-container">
                 {/* Error message */}
                 <div className="mt-2">
-                  <div className="text-red-500">
+                  <div className="blog-post-error">
                     bat: error: {`/var/www/blog/${params.slug}.md: No such file or directory`}
                   </div>
                 </div>
 
                 {/* Retry suggestion */}
                 <div className="mt-2">
-                  <div className="flex items-center">
-                    <span className="text-blue-400">exa</span>
-                    <span className="text-terminal-text"> -la --icons --git --color=always /var/www/blog</span>
+                  <div className="blog-post-retry">
+                    <span>exa</span>
+                    <span> -la --icons --git --color=always /var/www/blog</span>
                   </div>
                   <div className="mt-2">
-                    <Link href="/blog" className="text-blue-400 hover:underline flex items-center">
+                    <Link href="/blog" className="blog-post-back-link">
                       <span className="mr-1">←</span> Back to blog list
                     </Link>
                   </div>

@@ -1,0 +1,24 @@
+.footer-container {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid #1f2937;
+}
+
+.footer-command {
+  color: var(--prompt-command);
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 13px;
+  margin-left: 0.25rem;
+}
+
+.footer-blink {
+  animation: blink 1s step-end infinite;
+  color: var(--terminal-text);
+  margin-left: 0.25rem;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}

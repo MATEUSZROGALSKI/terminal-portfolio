@@ -1,0 +1,116 @@
+.contact-form-container {
+  font-family: var(--font-jetbrains-mono), monospace;
+  color: #e4e4e4;
+}
+
+.smtp-log {
+  margin-bottom: 1rem;
+}
+
+.smtp-log-line {
+  margin-bottom: 0.25rem;
+}
+
+.smtp-server-message {
+  color: #4390cf;
+}
+
+.smtp-client-message {
+  color: #27c93f;
+}
+
+.smtp-error-message {
+  color: #ff5f56;
+}
+
+.smtp-input-line {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.smtp-input-prompt {
+  color: #27c93f;
+  margin-right: 0.5rem;
+}
+
+.smtp-input {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  width: 100%;
+  color: #27c93f;
+  margin-left: 0.5rem;
+  padding-right: 1rem;
+}
+
+.smtp-input:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.smtp-cursor {
+  position: absolute;
+  left: 1.5rem;
+  color: #888;
+}
+
+.smtp-message-area {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  width: 100%;
+  color: #27c93f;
+  min-height: 5rem;
+  resize: vertical;
+  margin-top: 0.5rem;
+}
+
+.smtp-message-area:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.smtp-submit-button {
+  background-color: rgba(157, 78, 221, 0.2);
+  color: #9d4edd;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: 1rem;
+}
+
+.smtp-submit-button:hover {
+  background-color: rgba(157, 78, 221, 0.3);
+  transform: translateY(-1px);
+}
+
+.smtp-submit-button:disabled {
+  background-color: rgba(157, 78, 221, 0.1);
+  color: rgba(157, 78, 221, 0.5);
+  cursor: not-allowed;
+  transform: none;
+}
+
+.smtp-help-text {
+  color: #888;
+  font-size: 0.75rem;
+}
+
+.smtp-help-text .text-yellow-400 {
+  color: #fbbf24;
+}
+
+.smtp-success-message {
+  color: #27c93f;
+}
+
+.smtp-error-message {
+  color: #ff5f56;
+}
+
+.smtp-quit-message {
+  color: #fbbf24;
+}

@@ -1,0 +1,33 @@
+.command-line {
+  position: relative;
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 13px;
+  line-height: 1.5;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.command-prompt {
+  display: inline-block;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.command-text {
+  color: var(--prompt-command);
+  margin-left: 4px;
+  word-break: break-all;
+}
+
+.command-output-container {
+  color: #e4e4e4;
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 13px;
+  line-height: 1.5;
+  margin-top: 0.25rem;
+  padding-left: 0;
+  white-space: pre-wrap;
+  word-break: break-word;
+  width: 100%;
+}
