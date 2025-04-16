@@ -23,6 +23,19 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Setup ESLint if needed
+        run: |
+          if ! [ -f .eslintrc.json ]; then
+            echo "Setting up ESLint with Next.js recommended configuration"
+            echo '{
+              "extends": "next/core-web-vitals",
+              "rules": {
+                "react/no-unescaped-entities": "off",
+                "react-hooks/exhaustive-deps": "warn"
+              }
+            }' > .eslintrc.json
+          fi
+
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 

@@ -14,16 +14,6 @@ export default function NotFound() {
       <TerminalWindow>
         <Command command="cat blog/not-found.txt">
           <div className="command-output">
-            <pre className="text-yellow-400 font-mono mb-6">
-              {`
-  _   _       _     _____                     _
- | \\ | | ___ | |_  |  ___|__  _   _ _ __   __| |
- |  \\| |/ _ \\| __| | |_ / _ \\| | | | '_ \\ / _\` |
- | |\\  | (_) | |_  |  _| (_) | |_| | | | | (_| |
- |_| \\_|\\___/ \\__| |_|  \\___/ \\__,_|_| |_|\\__,_|
-
-              `}
-            </pre>
             <h1 className="text-xl font-bold mb-4">Error: Blog post not found</h1>
             <p className="mb-4">The blog post you're looking for could not be found. This could be due to:</p>
 

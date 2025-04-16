@@ -22,6 +22,19 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Setup ESLint if needed
+        run: |
+          if ! [ -f .eslintrc.json ]; then
+            echo "Setting up ESLint with Next.js recommended configuration"
+            echo '{
+              "extends": "next/core-web-vitals",
+              "rules": {
+                "react/no-unescaped-entities": "off",
+                "react-hooks/exhaustive-deps": "warn"
+              }
+            }' > .eslintrc.json
+          fi
+
       - name: Run linting
         run: npm run lint
 

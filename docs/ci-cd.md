@@ -18,6 +18,7 @@ The PR Build Validation workflow (`pr-build.yml`) runs whenever a pull request i
    - Checks out the code
    - Sets up Node.js
    - Installs dependencies
+   - Sets up ESLint with Next.js recommended configuration if needed
    - Runs linting
 
 2. **Build**:
@@ -32,6 +33,7 @@ The Docker Build and Push workflow (`docker-build-push.yml`) runs whenever chang
 
 1. **Build and Push**:
    - Checks out the code
+   - Sets up ESLint with Next.js recommended configuration if needed
    - Sets up Docker Buildx
    - Logs in to the GitHub Container Registry (GHCR)
    - Builds the Docker image

@@ -25,18 +25,6 @@ export default function Error({
       <TerminalWindow>
         <Command command="cat blog/error.log">
           <div className="command-output">
-            <pre className="text-red-400 font-mono mb-6">
-              {`
- _______  _______  _______  _______  _______  ___
-|       ||       ||       ||       ||       ||   |
-|    ___||    ___||    _  ||    _  ||   _   ||   |
-|   |___ |   |___ |   |_| ||   |_| ||  | |  ||   |
-|    ___||    ___||    ___||    ___||  |_|  ||   |
-|   |    |   |___ |   |    |   |    |       ||   |
-|___|    |_______||___|    |___|    |_______||___|
-
-              `}
-            </pre>
             <h1 className="text-xl text-red-400 font-bold mb-4">Something went wrong</h1>
             <p className="mb-4">An error occurred while trying to load this blog post.</p>
 
