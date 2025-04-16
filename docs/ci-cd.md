@@ -50,7 +50,7 @@ The Docker images are tagged with:
 
 ### GitHub Container Registry
 
-The Docker images are pushed to GitHub Container Registry (GHCR) with the repository name converted to lowercase for compatibility. The images can be pulled using:
+The Docker images are pushed to GitHub Container Registry (GHCR) with the repository name converted to lowercase for compatibility using Bash parameter expansion (`${GITHUB_REPOSITORY,,}`). The images can be pulled using:
 
 ```bash
 docker pull ghcr.io/mateuszrogalski/terminal-portfolio:latest
