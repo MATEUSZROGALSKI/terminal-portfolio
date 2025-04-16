@@ -9,8 +9,6 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  # Convert repository name to lowercase for GHCR compatibility
-  IMAGE_NAME: ${{ format('{0}', github.repository) | lower }}
 
 jobs:
   build-and-push:
@@ -45,6 +43,9 @@ jobs:
           registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Lowercase the repo name
+        run: echo "IMAGE_NAME=${GITHUB_REPOSITORY,,}" >> $GITHUB_ENV
 
       - name: Extract metadata (tags, labels) for Docker
         id: meta
