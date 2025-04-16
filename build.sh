@@ -30,6 +30,9 @@ COPY . .
 # Set environment variables for build
 ENV NEXT_TELEMETRY_DISABLED=1
 ENV NODE_ENV=production
+# Mock MongoDB environment variables for build
+ENV MONGODB_URI=mongodb://localhost:27017
+ENV MONGODB_DB=portfolio
 # Build the application
 RUN npm run build
 

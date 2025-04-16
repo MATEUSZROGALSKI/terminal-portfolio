@@ -73,6 +73,7 @@ The Docker build process uses a multi-stage build to create optimized images:
 
    - Copies dependencies from the previous stage
    - Copies the application code
+   - Sets up mock MongoDB environment variables for the build
    - Builds the Next.js application
 
 3. **Runner Stage**:
@@ -82,6 +83,17 @@ The Docker build process uses a multi-stage build to create optimized images:
    - Exposes the application port
 
 This multi-stage approach ensures that the final Docker image is as small as possible while still containing all the necessary files to run the application.
+
+### Environment Variables
+
+The build process uses mock environment variables for MongoDB to allow Next.js to build the API routes successfully:
+
+```
+MONGODB_URI=mongodb://localhost:27017
+MONGODB_DB=portfolio
+```
+
+These variables are only used during the build process and are not included in the final Docker image. When running the application in production, you should provide the actual MongoDB connection details as environment variables.
 
 ## Workflow Files
 

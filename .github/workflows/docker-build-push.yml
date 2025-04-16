@@ -68,3 +68,5 @@ jobs:
           # Add build args to ensure all dependencies are installed
           build-args: |
             NODE_ENV=development
+            MONGODB_URI=mongodb://localhost:27017
+            MONGODB_DB=portfolio
