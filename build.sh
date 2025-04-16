@@ -20,7 +20,7 @@ cat > Dockerfile.production << 'EOF'
 FROM node:22-alpine AS deps
 WORKDIR /app
 COPY package.json package-lock.json ./
-RUN npm ci --only=production
+RUN npm ci
 
 # Stage 2: Builder
 FROM node:22-alpine AS builder
@@ -28,8 +28,11 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 # Set environment variables for build
-ENV NEXT_TELEMETRY_DISABLED 1
-ENV NODE_ENV production
+ENV NEXT_TELEMETRY_DISABLED=1
+ENV NODE_ENV=production
+# Mock MongoDB environment variables for build
+ENV MONGODB_URI=mongodb://localhost:27017
+ENV MONGODB_DB=portfolio
 # Build the application
 RUN npm run build
 
@@ -38,8 +41,8 @@ FROM node:22-alpine AS runner
 WORKDIR /app
 
 # Set environment variables
-ENV NODE_ENV production
-ENV NEXT_TELEMETRY_DISABLED 1
+ENV NODE_ENV=production
+ENV NEXT_TELEMETRY_DISABLED=1
 
 # Create a non-root user to run the application
 RUN addgroup --system --gid 1001 nodejs && \
@@ -68,7 +71,7 @@ if grep -q "output: 'standalone'" next.config.js; then
 else
     # Create a backup of the original config
     cp next.config.js next.config.js.bak
-    
+
     # Update the config to add standalone output
     cat > next.config.js << 'EOF'
 /** @type {import('next').NextConfig} */

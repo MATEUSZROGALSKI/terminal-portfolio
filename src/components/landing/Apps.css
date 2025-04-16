@@ -1,0 +1,58 @@
+/* Apps component styling */
+.apps-container {
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: var(--terminal-font-size);
+}
+
+.process-item {
+  margin-bottom: 0.25rem;
+}
+
+.process-header {
+  display: flex;
+  align-items: center;
+}
+
+.process-details {
+  margin-left: 1rem;
+}
+
+.process-bar {
+  display: inline-block;
+  height: 1rem;
+  overflow: hidden;
+}
+
+.process-bar-cpu {
+  color: #4ade80; /* green-400 */
+}
+
+.process-bar-mem {
+  color: #60a5fa; /* blue-400 */
+}
+
+.process-label {
+  color: #9ca3af; /* gray-400 */
+  margin-right: 0.5rem;
+  width: 4rem;
+}
+
+.process-value {
+  color: #d1d5db; /* gray-300 */
+}
+
+.process-command {
+  color: #fcd34d; /* yellow-300 */
+}
+
+.process-tech {
+  color: #c4b5fd; /* purple-300 */
+}
+
+.process-link-repo {
+  color: #60a5fa; /* blue-300 */
+}
+
+.process-link-demo {
+  color: #4ade80; /* green-300 */
+}

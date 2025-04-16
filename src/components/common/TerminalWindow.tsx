@@ -49,7 +49,7 @@ export const TerminalWindow = ({ children }: TerminalWindowProps) => {
         <div className="flex h-full">
           <Link
             href="/"
-            className={`terminal-tab flex items-center justify-between px-3 text-xs h-full ${activeTab === 0 ? 'text-purple-400 border-b border-purple-400' : 'text-gray-400 hover:text-gray-200'}`}
+            className={`terminal-tab flex items-center justify-between px-3 h-full ${activeTab === 0 ? 'text-purple-400 border-b border-purple-400' : 'text-gray-400 hover:text-gray-200'}`}
           >
             <span>{homeTabTitle}</span>
             <span className="ml-2 text-gray-500 opacity-50 hover:opacity-100">
@@ -58,7 +58,7 @@ export const TerminalWindow = ({ children }: TerminalWindowProps) => {
           </Link>
           <Link
             href="/contact"
-            className={`terminal-tab flex items-center justify-between px-3 text-xs h-full ${activeTab === 1 ? 'text-purple-400 border-b border-purple-400' : 'text-gray-400 hover:text-gray-200'}`}
+            className={`terminal-tab flex items-center justify-between px-3 h-full ${activeTab === 1 ? 'text-purple-400 border-b border-purple-400' : 'text-gray-400 hover:text-gray-200'}`}
           >
             <span>{contactTabTitle}</span>
             <span className="ml-2 text-gray-500 opacity-50 hover:opacity-100">
@@ -67,7 +67,7 @@ export const TerminalWindow = ({ children }: TerminalWindowProps) => {
           </Link>
           <Link
             href="/blog"
-            className={`terminal-tab flex items-center justify-between px-3 text-xs h-full ${activeTab === 2 ? 'text-purple-400 border-b border-purple-400' : 'text-gray-400 hover:text-gray-200'}`}
+            className={`terminal-tab flex items-center justify-between px-3 h-full ${activeTab === 2 ? 'text-purple-400 border-b border-purple-400' : 'text-gray-400 hover:text-gray-200'}`}
           >
             <span>{blogTabTitle}</span>
             <span className="ml-2 text-gray-500 opacity-50 hover:opacity-100">
@@ -78,7 +78,6 @@ export const TerminalWindow = ({ children }: TerminalWindowProps) => {
       </div>
 
       <div className="terminal-content">
-        <Command command="clear" />
         {children}
         <Footer />
       </div>

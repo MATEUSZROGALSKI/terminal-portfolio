@@ -8,10 +8,10 @@ const Banner = () => {
   return (
     <div className="terminal-header px-4 py-8">
       <div className="flex flex-col items-center justify-center mb-8">
-        <h1 className="banner-title text-4xl md:text-5xl font-bold tracking-wide">
+        <h1 className="banner-title font-bold tracking-wide">
           MRogal.ski
         </h1>
-        <p className="banner-subtitle text-base md:text-lg mt-2">
+        <p className="banner-subtitle mt-2">
           software engineering and architecture
         </p>
       </div>

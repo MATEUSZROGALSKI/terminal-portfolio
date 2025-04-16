@@ -119,7 +119,7 @@ const BlogList: React.FC<BlogListProps> = ({ updateCommand }) => {
 
   if (error) {
     return (
-      <div className="font-mono text-xs md:text-sm">
+      <div className="font-mono terminal-font">
         {/* Terminal header */}
         <div className="mb-2">
           <div className="flex items-center">
@@ -158,7 +158,7 @@ const BlogList: React.FC<BlogListProps> = ({ updateCommand }) => {
   }
 
   return (
-    <div className="font-mono text-xs md:text-sm overflow-x-auto">
+    <div className="font-mono overflow-x-auto terminal-font">
       <div className="text-gray-500">
         total {totalPosts}
       </div>
@@ -197,7 +197,7 @@ const BlogList: React.FC<BlogListProps> = ({ updateCommand }) => {
           </div>
 
           {/* Description and tags with better styling */}
-          <div className="ml-[350px] text-gray-400 text-xs">
+          <div className="ml-[350px] text-gray-400">
             {post.description}
           </div>
 
@@ -205,7 +205,7 @@ const BlogList: React.FC<BlogListProps> = ({ updateCommand }) => {
             {post.tags.map(tag => (
               <span
                 key={tag}
-                className={`text-xs ${activeTag === tag ? 'text-green-400' : 'text-blue-400'}`}
+                className={`${activeTag === tag ? 'text-green-400' : 'text-blue-400'}`}
                 onClick={(e) => {
                   e.stopPropagation();
                   handleTagClick(tag);
@@ -263,7 +263,7 @@ const BlogList: React.FC<BlogListProps> = ({ updateCommand }) => {
 
 const BlogListFallback = () => {
   return (
-    <div className="font-mono text-xs md:text-sm">
+    <div className="font-mono terminal-font">
       {/* Loading animation */}
       <div className="mt-4">
         <div className="text-terminal-text">

@@ -7,7 +7,7 @@
 
 .prompt-base {
   font-family: var(--font-jetbrains-mono), monospace;
-  font-size: 13px;
+  font-size: var(--terminal-prompt-size);
   white-space: nowrap;
 }
 

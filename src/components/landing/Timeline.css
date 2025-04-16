@@ -1,6 +1,6 @@
 .timeline-container {
   font-family: var(--font-jetbrains-mono), monospace;
-  font-size: 0.875rem;
+  font-size: var(--terminal-font-size);
 }
 
 .timeline-error {
@@ -61,7 +61,7 @@
 .timeline-entry-details {
   margin-left: 2.5rem;
   color: #aaa;
-  font-size: 0.75rem;
+  font-size: var(--terminal-font-size);
 }
 
 .timeline-future-opportunity {

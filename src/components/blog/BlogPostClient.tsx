@@ -92,6 +92,13 @@ export default function BlogPostClient() {
       return `<code>${escapedCode}</code>`;
     });
 
+    // Process font size modifiers
+    // Format: [size:xs|sm|base|lg|xl|2xl|3xl]content[/size]
+    const fontSizeRegex = /\[size:(xs|sm|base|lg|xl|2xl|3xl)\](.*?)\[\/size\]/gi;
+    processedContent = processedContent.replace(fontSizeRegex, (_, size, content) => {
+      return `<span class="text-${size}">${content}</span>`;
+    });
+
     // Process the rest of the content
     const parts = processedContent.split('\n\n')
       .map(paragraph => {
@@ -187,7 +194,7 @@ export default function BlogPostClient() {
                   {/* Content column */}
                   <div className="overflow-x-auto">
                     {/* Title and metadata */}
-                    <div className="text-xl text-green-400">{post.title}</div>
+                    <div className="text-green-400 blog-post-title">{post.title}</div>
 
                     <div className="blog-post-meta">
                       <div className="blog-post-author">
@@ -208,7 +215,7 @@ export default function BlogPostClient() {
                     <div className="text-gray-500">---</div>
 
                     {/* Blog content */}
-                    <div className="blog-content text-sm leading-relaxed text-gray-200 mt-1"
+                    <div className="blog-content leading-relaxed text-gray-200 mt-1"
                          dangerouslySetInnerHTML={{ __html: formatContent(post.content) }} />
                   </div>
                 </div>

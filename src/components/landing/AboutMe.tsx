@@ -88,7 +88,7 @@ const AboutMe = () => {
 
   if (isLoading) {
     return (
-      <pre className="font-mono">
+      <pre className="font-mono terminal-font">
         <div className="text-terminal-text">Loading system information...</div>
       </pre>
     );
@@ -96,7 +96,7 @@ const AboutMe = () => {
 
   if (error) {
     return (
-      <pre className="font-mono">
+      <pre className="font-mono terminal-font">
         <div className="text-red-400">{error}</div>
         <div className="text-yellow-400 mt-2">Try running: neofetch --help</div>
       </pre>
@@ -108,13 +108,13 @@ const AboutMe = () => {
   const shortBio = bio.length > 300 ? bio.substring(0, 300) + '...' : bio;
 
   return (
-    <div className="command-output">
+    <div className="command-output terminal-font">
       <div className="neofetch-container">
         {/* ASCII Art Side */}
         <div className="ascii-container">
           <pre
             ref={asciiRef}
-            className="ascii-art font-mono text-xs md:text-sm"
+            className="ascii-art font-mono"
           >
             {/* Apply gradient colors to ASCII art */}
             {asciiArt.split('\n').map((line, index) => (
@@ -137,12 +137,12 @@ const AboutMe = () => {
           </div>
 
           <div className="info-line mb-2">
-            <span className="info-value text-xs">Welcome to my terminal portfolio! Type 'help' for available commands.</span>
+            <span className="info-value">Welcome to my terminal portfolio! Type 'help' for available commands.</span>
           </div>
 
           <div className="border-b border-gray-700 mb-2"></div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-1 text-sm">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-1">
             {/* System Info */}
             <div className="info-label">OS:</div>
             <div className="info-value">
@@ -206,13 +206,13 @@ const AboutMe = () => {
 
           <div className="border-b border-gray-700 my-2"></div>
 
-          <div className="text-xs mt-2">
+          <div className="mt-2">
             <div className="info-label mb-1">Bio:</div>
             <div className="info-value">{shortBio}</div>
           </div>
 
           <div className="mt-4">
-            <div className="info-label mb-1 text-xs">Skills:</div>
+            <div className="info-label mb-1">Skills:</div>
             <div className="flex flex-wrap gap-1">
               {/* Skill blocks with different colors */}
               {[
